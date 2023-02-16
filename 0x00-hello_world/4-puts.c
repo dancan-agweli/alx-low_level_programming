@@ -1,6 +1,9 @@
 #include <stdio.h>
-/* first output c program*/
-int main(void)
+/**
+ * main - A program that is used for puzzle
+ * Return: 0 (sucess)
+ */
+int	main(void)
 {
 	puts("\"Programming is like building a multilingual puzzle\n");
 	return (0);
