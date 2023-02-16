@@ -3,7 +3,7 @@
  * main - A program that is used for puzzle
  * Return: 0 (sucess)
  */
-int	main(void)
+int main(void)
 {
 	puts("\"Programming is like building a multilingual puzzle\n");
 	return (0);
