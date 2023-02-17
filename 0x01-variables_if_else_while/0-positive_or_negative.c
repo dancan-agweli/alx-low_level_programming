@@ -2,13 +2,12 @@
 #include <time.h>
 #include <stdio.h>
 /**
- * main - entry of code
- *
+ * main - entry
  * Return: away 0
  */
 int main(void)
 {
-i	int n;
+	int n;
 
 	srand(time(0));
 	n = rand() - RAND_MAX / 2;
