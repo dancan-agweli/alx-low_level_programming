@@ -1,7 +1,9 @@
 #include <stdlib.h>
 #include <time.h>
+#include <stdio.h>
 /**
- * main - entry of codes
+ * main - entry of code
+ *
  * Return: away 0
  */
 int main(void)
