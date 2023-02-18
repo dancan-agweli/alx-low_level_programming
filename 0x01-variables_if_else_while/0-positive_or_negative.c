@@ -1,15 +1,15 @@
-#include <stdlibi>
+#include <stdlib.h>
 #include <time.h>
 #include <stdio.h>
 
 /**
- * main - entry
- 0
+ * main - entry positive, negative or 0
  * Return: away 0
  */
 int main(void)
 {
 int n;
+
 srand(time(0));
 n = rand() - RAND_MAX / 2;
 
