@@ -11,7 +11,6 @@ int main(void)
 
 	for (lowerc = 'a'; lowerc <= 'z'; lowerc++)
 		putchar (lowerc);
-	putchar ('\n');
 	for (upperc = 'A'; upperc <= 'Z'; upperc++)
 		putchar (upperc);
 	putchar ('\n');
