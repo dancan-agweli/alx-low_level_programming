@@ -1,8 +1,8 @@
 #include "main.h"
 
 /**
- * main - programm got lower
- * Return: always return answer 0
+ * main - Entry
+ * Return: always  0
  */
 int _islower(int c)
 {
