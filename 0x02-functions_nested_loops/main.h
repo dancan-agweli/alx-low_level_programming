@@ -9,7 +9,6 @@ int print_last_digit(int);
 int _abs(int);
 int print_sign(int n);
 int _isalpha(int c);
-2-print_alphabet_x10.c
 void print_alphabet_x10(void);
 void print_alphabet(void);
 int -putchar(char c);
