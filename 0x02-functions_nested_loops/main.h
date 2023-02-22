@@ -1,5 +1,5 @@
 #ifndef MAIN_H
-#define MMAIN.H
+#define MAIN.H
 
 void print_to_98(int n);
 int add(int, int);
