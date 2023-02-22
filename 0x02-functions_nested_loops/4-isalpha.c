@@ -13,6 +13,6 @@ int _isalpha(int c)
 		return (1);
 	}
 
-i	return (0);
+	return (0);
 }
 
