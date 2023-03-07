@@ -1,1 +1,1 @@
-my 0x07 pointers
+my strings and pointers
