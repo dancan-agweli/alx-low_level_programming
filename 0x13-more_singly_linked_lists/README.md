@@ -1,1 +1,1 @@
-echo "my readme on stringly linked list under low leel programming in alx"
+"my readme on stringly linked list under low level programming in alx"
