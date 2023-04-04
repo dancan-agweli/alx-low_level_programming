@@ -1,6 +1,6 @@
 #include "lists.h"
-#include "stdio.h"
-#include "stdlib.h"
+#include <stdio.h>
+#include <stdlib.h>
 
 /**
  * sum_listint - Calculates the sum
@@ -9,13 +9,13 @@
  */
 int sum_listint(listint_t *head)
 {
-        int addition;
+	int add = 0;
 
-        if (head)
-        {
-                addition += head->n;
-                head = head->next;
-        }
+	while (head)
+	{
+		add += head->n;
+		head = head->next;
+	}
 
-        return (addition);
+	return (add);
 }
