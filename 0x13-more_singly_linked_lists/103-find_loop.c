@@ -2,10 +2,10 @@
 #include <stdlib.h>
 
 /**
- * find_listint_loop - Finds the loop 
+ * find_listint_loop - Finds the loop  in singly linked list
  * @head: A pointer
  *
- * Return: Always - NULL.
+ * Return: Always - always return 0 for NULL.
  */
 listint_t *find_listint_loop(listint_t *head)
 {
