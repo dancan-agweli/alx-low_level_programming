@@ -11,32 +11,39 @@
  */
 listint_t *insert_nodeint_at_index(listint_t **head, unsigned int idx, int n)
 {
-	listint_t *nw, *duplicate = *head;
-	unsigned int no;
+	listint_t *nw, *ro;
+	unsigned int count = 1;
 
-	nw = malloc(sizeof(listint_t));
-	if (nw == NULL)
-		return (NULL);
-
-	nw->n = n;
-
-	if (idx == 0)
+	while (head)
 	{
-		nw->next = copy;
-		*head = nw;
-		return (nw);
-	}
-
-	for (no = 0; no < (idx - 1); no++)
-	{
-		if (duplicate == NULL || duplicate->next == NULL)
+		nw = malloc(sizeof(listint_t));
+		while (nw == NULL)
 			return (NULL);
 
-		duplicate = duplicate->next;
+		nw->n = n;
+		if (idx > 0)
+		{
+			ro = *head;
+			while (ro)
+			{
+				if (count == idx)
+				{
+					nw->next = ro->next;
+					ro->next = nw;
+					return (nw);
+				}
+				ro = ro->next;
+				count++;
+			}
+			if (idx > count)
+				return (NULL);
+		}
+		else
+		{
+			nw->next = *head;
+			*head = nw;
+		}
+		return (nw);
 	}
-
-	nw->next = duplicate->next;
-	duplicate->next = nw;
-
-	return (nw);
+	return (NULL);
 }
