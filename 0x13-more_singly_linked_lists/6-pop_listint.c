@@ -3,22 +3,24 @@
 
 /**
   * pop_listint - Deletion of a node
-  * @head: Head of the node
+  * @head: Pointer address to Head of the node
   *
-  * Return: value or 0 case of empty
+  * Return: Value or 0 case of empyu
   */
 int pop_listint(listint_t **head)
 {
-	listint_t *newh;
-	int dan = 0;
+	listint_t *p;
+	int y;
 
-	if (*head != NULL)
-	{
-		newh = (*head)->next;
-		dan = (*head)->dan;
-		free(*head);
-		*head = newh;
-	}
+	if (*head == NULL)
+		return (0);
 
-	return (dan);
+	p = *head;
+	y = (*head)->y;
+	*head = (*head)->next;
+
+	free(p);
+
+	return (y);
 }
+
