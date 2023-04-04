@@ -33,7 +33,7 @@ listint_t *find_listint_loop(listint_t *head)
 		}
 
 		n = n->next;
-		m = m->->next;
+		m = m->next;
 	}
 
 	return (NULL);
