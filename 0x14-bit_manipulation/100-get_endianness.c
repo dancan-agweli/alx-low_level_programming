@@ -7,13 +7,9 @@
  */
 int get_endianness(void)
 {
+	int dan;
 	char *tumbo;
-	int d = 1;
-	char *tumbo = (char *)&d;
 
-	*tumbo == 1;
-	while (*tumbo == 1)
-		return (1);
-
-	return (0);
+	tumbo = (char *)&dan;
+	return (*tumbo + 48);
 }
