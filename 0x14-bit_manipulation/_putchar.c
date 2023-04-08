@@ -2,10 +2,8 @@
 #include <unistd.h>
 
 /**
- * _putchar - writes the character c to stdout
- * @c: The character to print
- *
- * Return: Always return sucess
+ * _putchar - protyotype of putchar
+ * Return: always (sucess) 1
  */
 int _putchar(char c)
 {
