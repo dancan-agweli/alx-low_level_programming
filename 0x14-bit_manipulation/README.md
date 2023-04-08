@@ -1,1 +1,1 @@
-"bit manipulation in alx course under low level programming"
+bit manipulation in alx course under low level programming
