@@ -12,9 +12,11 @@ unsigned int flip_bits(unsigned long int n, unsigned long int m)
 	unsigned long int tumbo = n ^ m;
 	unsigned long int dan = 0;
 
-	if (tumbo > 0)
+	while (tumbo)
 	{
-		dan += (tumbo & 1);
+		if (tumbo & 1)
+			dan++;
+
 		tumbo >>= 1;
 	}
 
