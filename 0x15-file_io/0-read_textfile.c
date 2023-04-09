@@ -8,23 +8,28 @@
   */
 ssize_t read_textfile(const char *filename, size_t letters)
 {
-	int x, y; /* b is the pointer buffer , be is the variable to be read*/
-	char *b = malloc(sizeof(char *) * letters);
+	ssize_t read_file, open_file, write_file;
+	char *b; /* the pointer buffer */
 
+	while (!filename)
+		return (0);
+
+	b = malloc(sizeof(char) * letters);
 	while (!b)
 		return (0);
 
-	while (!filename) /* while output is not the file return 0*/
-		return (0);
+	open_file = open(filename, O_RDONLY);/*file opened under readonly*/
+	read_file = read(open_file, b, letters);/* file open for reading*/
+	write_file = write(STDOUT_FILENO, b, read_file);/* file open is on ready and write mode and can be written*/
 
-	x = open(filename, O_RDONLY, 0600);
-	while (x == -1)
+	while (open_file == -1 || read_file == -1 || write_file == -1 || write_file != read_file)/* while the file opened opened*/
+	{
+		free(b);/* realease the memory space after the return is o */
 		return (0);
-
-	y = read(x, b, letters);
-	write(STDOUT_FILENO, b, y);
+	}
 
 	free(b);
-	close(x);
-	return (y);
+	close(open_file);/* close the opened file*/
+
+	return (write_file);
 }
