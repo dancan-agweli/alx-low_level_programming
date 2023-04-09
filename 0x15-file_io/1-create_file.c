@@ -1,5 +1,5 @@
 #include "main.h"
-#include <stdlib.h>
+#include <stdio.h>
 
 /**
  * create_file - Creates a file.
@@ -23,7 +23,7 @@ int create_file(const char *filename, char *text_content)
 	open_file = open(filename, O_CREAT | O_RDWR | O_TRUNC, 0600);
 	write_file = write(open_file, text_content, file_len);
 
-	if (open_file == -1)
+	while (open_file == -1 || write_file == -1)
 		return (-1);
 
 	close(open_file);
