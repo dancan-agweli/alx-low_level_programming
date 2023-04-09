@@ -19,14 +19,24 @@ ssize_t read_textfile(const char *filename, size_t letters)
 	while (!b)
 		return (0);
 
-	open_file = open(filename, O_RDONLY, 0600);
-	if (open_file == -1)
-		return (0);
-
+	open_file = open(filename, O_RDONLY);
 	read_file = read(open_file, b, letters);
-	write(STDOUT_FILENO, b, read_file);
+	write_file = write(STDOUT_FILENO, b, read_file);
+
+	if (open_file == -1)
+
+	if (read_file == -1)
+
+	if (write_file == -1)
+
+	if (write_file != read_file)
+	{
+		free(b);
+		return (0);
+	}
 
 	free(b);
 	close(open_file);
-	return (read_file);
+
+	return (write_file);
 }
