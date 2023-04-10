@@ -47,7 +47,10 @@ void close_file(int fd)
  * main - Duplicate the contents of a file to another file.
  * @argc: The arguments supplied to the program.
  * @argv: An array of pointers
- *            
+ *
+ * Return: 0 on sucess
+ *
+ * Description: If the argument count is incorrect - exit code 97
  */
 int main(int argc, char *argv[])
 {
