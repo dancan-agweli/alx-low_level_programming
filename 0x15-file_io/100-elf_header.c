@@ -133,7 +133,7 @@ void print_version(unsigned char *tumbo)
 
 /**
  * print_osabi - Prints the OS/ABI of an ELF
- * @tumbo: A pointer to an array 
+ * @tumbo:A pointer to an array in ElF file
  */
 void print_osabi(unsigned char *tumbo)
 {
