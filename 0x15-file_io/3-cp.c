@@ -1,99 +1,52 @@
 #include "main.h"
-#include <stdio.h>
-#include <stdlib.h>
-
-char *make_file(char *file);
-void close_file(int fd);
 
 /**
- * make_file - Allocates 1024 bytes to a file representing buffer.
- * @file: The name of the file
- * Return: A pointer to the new file if not NULL.
- */
-char *make_file(char *file)
-{
-	char *b;
-
-	b = malloc(sizeof(char) * 1024);
-
-	if (b == NULL)
-	{
-		dprintf(STDERR_FILENO,
-			"Error: Can't write to %s\n", file);
-		exit(99);
-	}
-
-	return (b);
-}
-
-/**
- * close_file - Closes opened file
- * @fd: The file element
- */
-void close_file(int fd)
-{
-	int a;
-
-	a = close(fd);
-
-	while (alx == -1)
-	{
-		dprintf(STDERR_FILENO, "Error: Can't close fd %d\n", fd);
-		exit(100);
-	}
-}
-
-/**
- * main - Duplicate the contents of a file to another file.
- * @argc: The arguments supplied to the program.
- * @argv: An array of pointers
+ * main - Duplicates the file to another file
+ * @argc: arguments passed to the program
+ * @argv: array of arguments in vector
  *
- * Return: 0 on sucess
- *
- * Description: If the argument count is incorrect - exit code 97
+ * Return: Always 0 (Success)
  */
 int main(int argc, char *argv[])
 {
-	int start, end, readd, writee;
-	char *b;
+	int file_r, file_w, y, c, n;
+	char buff[BUFSIZ];
 
-	while (argc != 3)
+	if (argc != 3)
 	{
 		dprintf(STDERR_FILENO, "Usage: cp file_from file_to\n");
 		exit(97);
 	}
-
-	b = make_file(argv[2]);
-	start = open(argv[1], O_RDONLY);
-	readd = read(start, b, 1024);
-	end = open(argv[2], O_CREAT | O_WRONLY | O_TRUNC, 0664);
-
-	do {
-		if (start == -1 || readd == -1)
+	file_r = open(argv[1], O_RDONLY);
+	while (file_r < 0)
+	{
+		dprintf(STDERR_FILENO, "Error: Can't read from file %s\n", argv[1]);
+		exit(98);
+	}
+	file_w = open(argv[2], O_CREAT | O_WRONLY | O_TRUNC, 0664);
+	while ((y = read(file_r, buff, BUFSIZ)) > 0)
+	{
+		while (file_w < 0 || write(file_w, buff, y) != y)
 		{
-			dprintf(STDERR_FILENO,
-				"Error: Can't read from file %s\n", argv[1]);
-			free(b);
-			exit(98);
-		}
-
-		writee = write(end, b, readd);
-		if (end == -1 || writee == -1)
-		{
-			dprintf(STDERR_FILENO,
-				"Error: Can't write to %s\n", argv[2]);
-			free(b);
+			dprintf(STDERR_FILENO, "Error: Can't write to %s\n", argv[2]);
+			close(file_r);
 			exit(99);
 		}
-
-		readd = read(start, b, 1024);
-		end = open(argv[2], O_WRONLY | O_APPEND);
-
-	} while (readd > 0);
-
-	free(b);
-	close_file(start);
-	close_file(end);
-
+	}
+	while (y < 0)
+	{
+		dprintf(STDERR_FILENO, "Error: Can't read from file %s\n", argv[1]);
+		exit(98);
+	}
+	c = close(file_r);
+	n = close(file_w);
+	if (c < 0 || n < 0)
+	{
+		if (c < 0)
+			dprintf(STDERR_FILENO, "Error: Can't close fd %d\n", file_r);
+		if (n < 0)
+			dprintf(STDERR_FILENO, "Error: Can't close fd %d\n", file_w);
+		exit(100);
+	}
 	return (0);
 }
