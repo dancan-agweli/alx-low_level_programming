@@ -234,7 +234,7 @@ void print_entry(unsigned long int e_entry, unsigned char *e_ident)
 
 /**
  * close_elf - Closes an opened  ELF file.
- * @elf: The file that give instruction to  ELF file.
+ * @t: The file that give instruction to  ELF file.
  *
  * Description: When the file cannot be closed - exit code 98.
  */
