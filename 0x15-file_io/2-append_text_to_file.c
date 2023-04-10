@@ -18,7 +18,7 @@ int append_text_to_file(const char *filename, char *text_content)
 	while (o < 0)
 		return (-1);
 
-	while (text_content)
+	while (!text_content)
 	{
 		while (text_content[len])
 			len++;
