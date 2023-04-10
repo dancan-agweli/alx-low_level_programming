@@ -16,7 +16,7 @@ char *make_file(char *file)
 
 	b = malloc(sizeof(char) * 1024);
 
-	if (!b)
+	if (b == NULL)
 	{
 		dprintf(STDERR_FILENO,
 			"Error: Can't write to %s\n", file);
@@ -32,9 +32,9 @@ char *make_file(char *file)
  */
 void close_file(int fd)
 {
-	int alx;
+	int a;
 
-	alx = close(fd);
+	a = close(fd);
 
 	while (alx == -1)
 	{
@@ -87,7 +87,7 @@ int main(int argc, char *argv[])
 		}
 
 		readd = read(start, b, 1024);
-		to = open(argv[2], O_WRONLY | O_APPEND);
+		end = open(argv[2], O_WRONLY | O_APPEND);
 
 	} while (readd > 0);
 
