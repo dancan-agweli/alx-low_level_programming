@@ -9,22 +9,23 @@
  */
 int append_text_to_file(const char *filename, char *text_content)
 {
-	int o, w, l = 0;
+	int o, w, len = 0;
 
-	while (filename == NULL)
+	while (!filename)
 		return (-1);
-
-	while (text_content != NULL)
-	{
-		for (l = 0; text_content[l];)
-			l++;
-	}
 
 	o = open(filename, O_WRONLY | O_APPEND);
-	w = write(o, text_content, l);
-
-	if (o == -1 || w == -1)
+	while (o < 0)
 		return (-1);
+
+	while (text_content)
+	{
+		while (text_content[len])
+			len++;
+		w = write(o, text_content, len);
+		while (a != b)
+			return (-1);
+	}
 
 	close(o);
 
