@@ -7,13 +7,17 @@
  */
 int sum_dlistint(dlistint_t *head)
 {
-	int total = 0;
+	dlistint_t *x = head;
+	int sum = 0;
 
 	if (head)
 	{
-		total += head->n;
-		head = head->next;
+		while (x != NULL)
+		{
+			sum += x->n;
+			x = x->next;
+		}
 	}
 
-	return (total);
+	return (sum);
 }
