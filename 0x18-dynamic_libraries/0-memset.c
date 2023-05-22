@@ -4,7 +4,8 @@
 
 /**
  * _memset - Fills the fill
- * s: ...
+ * s:...
+ * b: ...
  */
 char *_memset(char *s, char b, unsigned int n)
 {}
