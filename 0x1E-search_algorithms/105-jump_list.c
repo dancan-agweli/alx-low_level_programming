@@ -1,39 +1,41 @@
 #include "search_algos.h"
 
 /**
- * jump_list - Search in sorted singly linked list using jump search.
- * @list: linked list to search.
+ * jump_list - Searches a sorted singly linked list using jump search.
+ * @list: Pointer to the head of the linked list.
  * @size: Number of nodes in the list.
  * @value: Value to search for.
- * Return: Pointer to first node
- * Description: Prints value compared in the list.
- * Uses sqrt of list size as the jump step (xx).
+ *
+ * Return: Pointer to the first node with the value, else NULL.
+ *
+ * Description: Prints value comparisons in the list.
+ * Uses the square root of the list size as the jump step.
  */
 listint_t *jump_list(listint_t *list, size_t size, int value)
 {
-	size_t xx, xx_size;
-	listint_t *node, *m;
+	size_t step, step_size;
+	listint_t *node, *jump;
 
 	if (!list || size == 0)
 		return (NULL);
 
-	xx = 0;
-	xx_size = sqrt(size);
-	for (node = m = list; m->index + 1 < size && m->n < value;)
+	step = 0;
+	step_size = sqrt(size);
+	for (node = jump = list; jump->index + 1 < size && jump->n < value;)
 	{
-		node = m;
-		for (xx += xx_size; m->index < xx; m = m->next)
+		node = jump;
+		for (step += step_size; jump->index < step; jump = jump->next)
 		{
-			if (m->index + 1 == size)
+			if (jump->index + 1 == size)
 				break;
 		}
-		printf("Value checked at index [%ld] = [%d]\n", m->index, m->n);
+		printf("Value checked at index [%ld] = [%d]\n", jump->index, jump->n);
 	}
 
 	printf("Value found between indexes [%ld] and [%ld]\n",
-			node->index, m->index);
+			node->index, jump->index);
 
-	for (; node->index < m->index && node->n < value; node = node->next)
+	for (; node->index < jump->index && node->n < value; node = node->next)
 		printf("Value checked at index [%ld] = [%d]\n", node->index, node->n);
 	printf("Value checked at index [%ld] = [%d]\n", node->index, node->n);
 
