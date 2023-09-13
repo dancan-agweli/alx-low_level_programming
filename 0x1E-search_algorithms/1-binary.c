@@ -2,7 +2,7 @@
 
 /**
  * print_array - prints an array of integers
- * @array: array 
+ * @array: array
  * @size: size of arr
  * return: answer
  */
@@ -22,9 +22,9 @@ void print_array(int *array, size_t size)
 }
 
 /**
- * binary_search -  value in a sorted array of integers 
+ * binary_search - value in a sorted array of integers
  * @array: pointer to the first element of the array to search in
- * @size: number of elements 
+ * @size: number of elements
  * @value: value to search for
  * Return: answer
  */
