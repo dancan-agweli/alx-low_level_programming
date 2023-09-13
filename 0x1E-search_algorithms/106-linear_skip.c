@@ -1,35 +1,41 @@
 #include "search_algos.h"
 
 /**
- * linear_skip - Searches for a value in a skip list
- * @list: Input list.
- * @value: Value to search for.
- * Return: Pointer to the node with the value, or NULL.
+ * linear_skip - Searches for an algorithm in a sorted singlley
+ * @list: A pointer to the  head
+ * @value: The value
+ * Return: answer
+ * Description: Prints a value
  */
 skiplist_t *linear_skip(skiplist_t *list, int value)
 {
-	skiplist_t *dan;
+	skiplist_t *node, *jump;
 
 	if (list == NULL)
 		return (NULL);
-	dan = list;
-	while (dan)
+
+	for (node = jump = list; jump->next != NULL && jump->n < value;)
 	{
-		printf("Value checked at index [%d] = [%d]\n", (int)dan->index, dan->n);
-
-		if (!dan->express || dan->express->n >= value)
+		node = jump;
+		if (jump->express != NULL)
 		{
-			if (dan->n == value)
-				return (dan);
-
-			dan = dan->next;
+			jump = jump->express;
+			printf("Value checked at index [%ld] = [%d]\n",
+					jump->index, jump->n);
 		}
 		else
 		{
-			dan = dan->express;
+			while (jump->next != NULL)
+				jump = jump->next;
 		}
 	}
 
-	return (NULL);
-}
+	printf("Value found between indexes [%ld] and [%ld]\n",
+			node->index, jump->index);
 
+	for (; node->index < jump->index && node->n < value; node = node->next)
+		printf("Value checked at index [%ld] = [%d]\n", node->index, node->n);
+	printf("Value checked at index [%ld] = [%d]\n", node->index, node->n);
+
+	return (node->n == value ? node : NULL);
+}
